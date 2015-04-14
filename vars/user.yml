@@ -5,34 +5,39 @@
 ###############################################################################
 
 # common
-domain: TODO.com
-main_user_name: TODO
-encfs_password: TODO
+domain: irqzero.com
+main_user_name: interrupt
+encfs_password: 6Ky;k}Jl4hHYEBDWpLt)Pxf7rR0bz>3cOUw[Z]S+8{2Coav1NQ
 
 # database
 db_admin_username: postgres
-db_admin_password: TODO
+db_admin_password: postgres
 
 # ircbouncer
-irc_nick: TODO
-irc_ident: TODO
-irc_realname: TODO
-irc_quitmsg: TODO
-irc_password_hash: TODO
-irc_password_salt: TODO
-irc_timezone: TODO      #Example: "America/New_York"
+znc_version: 1.4
+irc_nick: misterinterrupt
+irc_ident: misterinterrupt
+irc_realname: interrupt
+irc_quitmsg: byebye
+irc_password_hash: "20b0e8d3dbbf129560a7b6ffaa901154e6f13c0931ebbaefb6320e54f0b3027e"
+irc_password_salt: "*1Im_f,mX;l_X!)Ou6pW"
+irc_timezone: "America/Los_Angeles"
 
 # mailserver
-mail_db_password: TODO
+mail_server_hostname: "mail.{{ domain }}"
+mail_server_autoconfig_hostname: "autoconfig.{{ domain }}"
+mail_db_username: mailuser
+mail_database: mailserver
+mail_db_password: "gJY0&(4q{cDpv2/f5PQR*8BkXC1AzHixtUjZNOE9d6?Km]oSh"
 mail_virtual_domains:
   - name: "{{ domain }}"
     pk_id: 1
-#  - name: TODO.com
+#  - name: name
 #    pk_id: 2
 mail_virtual_users:
   - account: "{{ main_user_name }}"
     domain: "{{ domain }}"
-    password_hash: TODO
+    password_hash: "GHT66Mdia3KcGDAQghcuTufjbvBKUu24Te869UJWuH"
     domain_pk_id: 1
 #  - account: "{{ TODO }}"
 #    domain: "{{ domain }}"
@@ -51,38 +56,39 @@ mail_virtual_aliases:
 mail_header_privacy: 1
 
 # z-push
-zpush_timezone: "TODO"  #Example: "America/New_York"
+zpush_timezone: "America/Los_Angeles"
 
 # owncloud
-owncloud_db_password: TODO
+owncloud_db_password: HEUrYH8U7RVpwsj3g6y7J86RJr6CshwFWwFCBkahKt
 
 # vpn
 openvpn_key_country:  "US"
 openvpn_key_province: "California"
-openvpn_key_city: "Beverly Hills"
+openvpn_key_city: "Bel Aire"
 openvpn_key_org: "ACME CORPORATION"
-openvpn_key_ou: "Anvil Department"
+openvpn_key_ou: "Trans-Dimensional Interference Department"
 openvpn_clients:
   - laptop
   - phone
-  - tablet
+  - desktop
 
 # webmail
-webmail_db_password: TODO
+webmail_db_password: AUgCki69e83pwb2cvyn3mWrPXoBpZkRfbFML6Qz4nb
 
 # xmpp
 prosody_admin: "{{ admin_email }}"
 prosody_virtual_domain: "{{ domain }}"
 prosody_accounts:
   - name: "{{ main_user_name }}"
-    password: TODO
+    password: Csq8ja6a8GADWAd9HQ4CknKBeqFTQZHay4q93mtwwx
 
 # selfoss
-selfoss_db_password: "TODO"
+selfoss_db_password: "oQ42bmXpadqDHWrC6B4i6smYyirnxzbbnB8TuKH29m"
 selfoss_username: "{{ main_user_name }}"
 # this is the sha512 hash of the desired password
-selfoss_password_hash: "TODO"
+selfoss_password_hash: "0d43a48cad2e117b0c6739e35ae060ea5bbb4ad4a535b1b005e465a531d39f021d24b8c4255e5dfce5f86aa9cbc9573cdadbe2e57532fae1b54d7476d5c9ffb3
+"
 
 # wallabag
-wallabag_salt: TODO
-wallabag_db_password: TODO
+wallabag_salt: E4dQY9hBYw8caEtewHq7B44arfABZfcrJRz9D3htCx
+wallabag_db_password: 7QrrkBrsYo9kgE9nZck8fnd2ap9Thnhm4FaMFtBs7y
