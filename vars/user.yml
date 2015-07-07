@@ -8,6 +8,7 @@
 domain: irqzero.com
 main_user_name: interrupt
 encfs_password: 6Ky;k}Jl4hHYEBDWpLt)Pxf7rR0bz>3cOUw[Z]S+8{2Coav1NQ
+hosting_platform: aws
 
 # database
 db_admin_username: postgres
@@ -32,19 +33,19 @@ mail_db_password: "gJY0&(4q{cDpv2/f5PQR*8BkXC1AzHixtUjZNOE9d6?Km]oSh"
 mail_virtual_domains:
   - name: "{{ domain }}"
     pk_id: 1
-#  - name: name
-#    pk_id: 2
 mail_virtual_users:
   - account: "{{ main_user_name }}"
     domain: "{{ domain }}"
-    password_hash: "GHT66Mdia3KcGDAQghcuTufjbvBKUu24Te869UJWuH"
+    password_hash: "$6$DFkBxO6R8L.3sUCk$NI9/lem/Nn9yh972R1F5AJYF5BLENGtMl88ZeSmYM1P4d6gvl5H2imVo1n4/4f16l7qs0qjdPx6b5y3TIGnTh0"
     domain_pk_id: 1
-#  - account: "{{ TODO }}"
-#    domain: "{{ domain }}"
-#    password_hash: TODO
-#    domain_pk_id: 2
 mail_virtual_aliases:
   - source: "root@{{ domain }}"
+    destination: "{{ admin_email }}"
+    domain_pk_id: 1
+  - source: "accounts@{{ domain }}"
+    destination: "{{ admin_email }}"
+    domain_pk_id: 1
+  - source: "authentication@{{ domain }}"
     destination: "{{ admin_email }}"
     domain_pk_id: 1
   - source: "postmaster@{{ domain }}"
@@ -64,8 +65,8 @@ owncloud_db_password: HEUrYH8U7RVpwsj3g6y7J86RJr6CshwFWwFCBkahKt
 # vpn
 openvpn_key_country:  "US"
 openvpn_key_province: "California"
-openvpn_key_city: "Bel Aire"
-openvpn_key_org: "ACME CORPORATION"
+openvpn_key_city: "Berkeley"
+openvpn_key_org: "IRQ Zero"
 openvpn_key_ou: "Trans-Dimensional Interference Department"
 openvpn_clients:
   - laptop
@@ -86,9 +87,13 @@ prosody_accounts:
 selfoss_db_password: "oQ42bmXpadqDHWrC6B4i6smYyirnxzbbnB8TuKH29m"
 selfoss_username: "{{ main_user_name }}"
 # this is the sha512 hash of the desired password
-selfoss_password_hash: "0d43a48cad2e117b0c6739e35ae060ea5bbb4ad4a535b1b005e465a531d39f021d24b8c4255e5dfce5f86aa9cbc9573cdadbe2e57532fae1b54d7476d5c9ffb3
-"
+selfoss_password_hash: "0d43a48cad2e117b0c6739e35ae060ea5bbb4ad4a535b1b005e465a531d39f021d24b8c4255e5dfce5f86aa9cbc9573cdadbe2e57532fae1b54d7476d5c9ffb3"
 
 # wallabag
 wallabag_salt: E4dQY9hBYw8caEtewHq7B44arfABZfcrJRz9D3htCx
 wallabag_db_password: 7QrrkBrsYo9kgE9nZck8fnd2ap9Thnhm4FaMFtBs7y
+
+#nodejs
+
+#nginx
+docroot: "/var/www"

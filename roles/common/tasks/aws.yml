@@ -1,0 +1,12 @@
+---
+# sets up ansible to use the aws EIP
+- name: Install curl package (Debian based)
+  action: "{{ ansible_pkg_mgr }} pkg='curl' state=installed"
+
+- name: Get and set AWS public IP
+  shell: curl http://169.254.169.254/latest/meta-data/public-ipv4
+  register: aws_public_ip_request
+
+- name: assign the response to variable aws_public_ip
+  set_fact:
+    aws_public_ip: "{{ aws_public_ip_request.stdout }}"

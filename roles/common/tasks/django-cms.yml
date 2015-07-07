@@ -1,0 +1,24 @@
+# install django-cms in a virtualenv with apt
+#
+---
+- hosts: ec2
+  sudo: True
+  gather_facts: False
+
+  tasks:
+  - name: ensure apt cache is up to date
+    action: apt update_cache=yes
+  - name: ensure packages are installed
+    action: apt pkg=$item
+    with_items:
+        - python-virtualenv
+        - python-pip
+  - name: ensure apache serves the site
+
+- hosts: ec2
+  sudo: False
+  gather_facts: False
+
+  tasks:
+  - name: install django-cms into virtualenv
+    action: pip name=django-cms virtualenv=/home/admin/ve/django-cms-env

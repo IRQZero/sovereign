@@ -1,0 +1,31 @@
+---
+# as per https://github.com/joyent/node/wiki/installing-node.js-via-package-manager
+#- name: Setup Nodejs
+#  command: curl -sL https://deb.nodesource.com/setup | sudo bash -
+
+# replaced by 
+- name: Ensure Ubuntu Distro is Supported
+  get_url: 
+    url='https://deb.nodesource.com/node/dists/{{ ansible_distribution_release }}/Release'
+    dest=/dev/null
+  register: distrosupported
+
+- name: Add Nodesource Keys
+  apt_key: 
+    url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key state=present
+
+- name: Add Nodesource Apt Sources List Deb
+  apt_repository: 
+    repo='deb https://deb.nodesource.com/node {{ ansible_distribution_release }} main' 
+    state=present
+  when: distrosupported|success
+
+- name: Add Nodesource Apt Sources List Deb Src
+  apt_repository: 
+    repo='deb-src https://deb.nodesource.com/node {{ ansible_distribution_release }} main' 
+    state=present
+  when: distrosupported|success
+
+- name: Install NodeJS
+  apt: pkg=nodejs state=latest update_cache=true
+  when: distrosupported|success

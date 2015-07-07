@@ -25,3 +25,12 @@
 
     HostnameLookups         Off
 </VirtualHost>
+
+<Directory />
+    AllowOverride None
+</Directory>
+<Directory /var/www/>
+    AllowOverride None
+    Order allow,deny
+    allow from all
+</Directory>
